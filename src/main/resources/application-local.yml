@@ -14,7 +14,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Camping-Side/config-service.git
+          uri: https://github.com/Camping-Side/camping-config-serivce.git
           default-label: master
 #          private repository ??...
 #          username: [your username]
