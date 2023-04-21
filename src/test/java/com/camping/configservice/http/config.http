@@ -1,0 +1,27 @@
+### healthcheck
+GET http://localhost:8000/user-service/health_check
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlYTY3YTU5MS0wNWRkLTQ3NGItODM0ZS0xNDY5OTJmZTk1NWIiLCJleHAiOjE2NzkzMjk3MTV9.VvroN30UDcOfi1o2oSxCQt-tIb_5ojJNL-gQlvUu4W-zheJwu7UY7uaBMwTiWiQwVkr503kMm6YvJfC6v5xaqw
+
+### actuator refresh
+POST http://localhost:8000/user-service/actuator/refresh
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlYTY3YTU5MS0wNWRkLTQ3NGItODM0ZS0xNDY5OTJmZTk1NWIiLCJleHAiOjE2NzkzMjk3MTV9.VvroN30UDcOfi1o2oSxCQt-tIb_5ojJNL-gQlvUu4W-zheJwu7UY7uaBMwTiWiQwVkr503kMm6YvJfC6v5xaqw
+
+### actuator bus refresh
+POST http://localhost:8000/user-service/actuator/busrefresh
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlYTY3YTU5MS0wNWRkLTQ3NGItODM0ZS0xNDY5OTJmZTk1NWIiLCJleHAiOjE2NzkzMjk3MTV9.VvroN30UDcOfi1o2oSxCQt-tIb_5ojJNL-gQlvUu4W-zheJwu7UY7uaBMwTiWiQwVkr503kMm6YvJfC6v5xaqw
+
+### config encrypt
+POST http://localhost:9888/encrypt
+
+1234
+
+### config decrypt
+POST http://localhost:9888/decrypt
+
+56e2dce6b1eae6819154402779bbb4d399d543153e0cf05d8eee8d3e76dcfdc4
+
+### config
+GET http://localhost:9888/user-service/default
+
+### config
+GET http://localhost:9888/config-service/default
