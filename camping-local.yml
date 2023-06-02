@@ -58,7 +58,7 @@ my:
 
 jwt:
   header: Authorization
-  secret: '{cipher}bfeebc9d2f472049a914c0fef0c2acc2b50d33688dd0e0e118e46d0da58321597642f8d30683b7eeeb711ad5a460eb31'
+  secret: '{cipher}c3d5462930a3d3987748d905e703e3dbc533f5262646890f4153f32a6d3749dc55c9481bc0e3d8590b47638655097228fa6340bb017a2123df5360a9126396bf'
   # 30분
   access-token-expire-time: 18000
   #  access-token-expire-time: 10
