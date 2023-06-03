@@ -3,7 +3,7 @@ spring:
     host: b-30d5fceb-8119-4270-ba48-b7cd3d155416.mq.ap-northeast-2.amazonaws.com
     port: 5671
     username: camping
-    password: '{cipher}a8a92f0012fc9d3e665148fd54f891d7f479baf3a8488d3606c7338c7df1cc5afca5cf259a5a7a56e6218143b812d8e8'
+    password: '{cipher}7d2d9706acb862cceab6de2e610b679a0c68aa468c581f7e92ba16d0eca81492'
     ssl:
       enabled: true
     listener:
