@@ -18,7 +18,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/task_agile?characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
     username: scott
-    password: '{cipher}8117f1f64f7047e10ebf763f8a42501ee7bf7f1c03b7703c83bf0dbaefb6e6e1'
+    password: '{cipher}2515ace4b4a757c7e6cd0c4076d3de44f202e310b2116500a55e62c5b47ef07a'
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -65,7 +65,7 @@ my:
 
 jwt:
   header: Authorization
-  secret: '{cipher}7198b184d3afc3cd84b244d45efc7ff6712533ba9d34a4619a3f7b482c950f37e929b4db497093dd64f66e60a82746afc3b877a4f9417fabc172b0eb380cfe812a4dae9332a2dc5295db321a85f42f607e35b2bb4053367299401ac92c6c67e606ea86506758d71a42bdc9b56d3c0afb'
+  secret: '{cipher}2cfaf74f35c6ceab1fe28c6227a5aceb3a9c1a8ad9c4d4481361f1366e27e2e1e8f0a0652718349b8d5e08a0d916f47df784fa02d0efae385d880e4307b796490dc0cbec79df468fde748be0761990fb5b76dc22c3ce98d58a1fd8e032600bfb'
   # 30분
   access-token-expire-time: 18000
   #  access-token-expire-time: 10
