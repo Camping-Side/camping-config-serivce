@@ -4,6 +4,13 @@ spring:
     port: 5672
     username: guest
     password: guest
+  zipkin:
+    base-url: http://43.200.32.212:9411/
+    enabled: true
+  sleuth:
+    sampler:
+      # 얼마나 많은 비율로 zipkin에 transaction을 전송할 것인가
+      probability: 1.0
   servlet:
     multipart:
       max-file-size: 10MB
