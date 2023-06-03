@@ -50,8 +50,8 @@ spring:
 cloud:
   aws:
     credentials:
-      access-key: abc
-      secret-key: eeee
+      access-key: '{cipher}86ba90efac75b11dc3cab958c009c385fe7d9adcb61ac733ce7a96e63c8e10af14cbb8b282808e99f4438e8141d7f489'
+      secret-key: '{cipher}3e33bed3fdcffaae36f5376077076aa508d50b2486f124a171eeba44987deafece4a29a4d3d468b7a26ea3e676e36d46c6e3690db26ee56edcd682954f8a687c'
     s3:
       bucket: camping-kr
     region:
