@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - "v*"
 
 env:
   REGISTRY: ghcr.io
@@ -56,6 +58,7 @@ jobs:
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          flavor: latest=true
 
       # Dockerfile 기준으로 빌드가 성공하면 이미지를 Github 패키지로 푸시함
       - name: Build and push Docker image
