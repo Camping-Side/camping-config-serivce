@@ -59,6 +59,10 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=true
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
 
       # Dockerfile 기준으로 빌드가 성공하면 이미지를 Github 패키지로 푸시함
       - name: Build and push Docker image
