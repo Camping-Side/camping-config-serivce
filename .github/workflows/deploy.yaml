@@ -25,25 +25,20 @@ jobs:
         with:
           java-version: 11
 
-      - name: Determine Version
-        id: version
+      - name: Set Release version env variable
         run: |
-          export VERSION=$(git describe --tags --abbrev=0)
-          echo "Version: $VERSION"
-          echo "::set-output name=version::$VERSION"
+          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
-      - name: Build and package
-        run: mvn clean package
 
       - name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.version.outputs.version }}
-          release_name: Release ${{ steps.version.outputs.version }}
+          tag_name: ${{ env.RELEASE_VERSION }}
+          release_name: Release ${{ env.RELEASE_VERSION }}
           body: |
-            Release notes for version ${{ steps.version.outputs.version }}
+            Release notes for version ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
       # Git 태그에서 버전 정보를 가져옵니다.
