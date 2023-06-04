@@ -6,10 +6,16 @@ spring:
   application:
     name: config-service
   rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
+    host: b-30d5fceb-8119-4270-ba48-b7cd3d155416.mq.ap-northeast-2.amazonaws.com
+    port: 5671
+    username: camping
+    password: ${ rabbitmq.password }
+#    virtual-host: /camping
+    ssl:
+      enabled: true
+    listener:
+      simple:
+        acknowledge-mode: manual
   cloud:
     config:
       server:
