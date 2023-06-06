@@ -41,14 +41,6 @@ jobs:
             Release notes for version ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
-      # Git 태그에서 버전 정보를 가져옵니다.
-
-
-#      - name: Deploy Artifact
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: artifact
-#          path: target/config-service-1.0.jar.jar
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
@@ -109,4 +101,24 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  pull-image-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install SSH client
+        run: sudo apt-get install openssh-client -y
+
+      - name: Execute remote script
+        run: |
+          echo "$SSH_PEM_KEY" >> $HOME/camping.pem
+          chmod 400 $HOME/camping.pem
+          ssh -i $HOME/camping.pem -o StrictHostKeyChecking=no ubuntu@ec2-43-200-32-212.ap-northeast-2.compute.amazonaws.com '/home/ubuntu/github_action/config-server-deploy.sh'
+
+        env:
+          SSH_PEM_KEY: ${{ secrets.ORG_CAMPING_PEM }}
+
 
