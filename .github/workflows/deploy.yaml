@@ -13,6 +13,9 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   RESOURCE_PATH: ./src/main/resources/application-dev.yml
   BOOTSTRAP_PATH: ./src/main/resources/bootstrap-dev.yml
+  CODE_DEPLOY_APPLICATION_NAME: camping-code-deploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: camping-server
+  S3_BUCKET_NAME: camping-kr
 
 jobs:
   release:
