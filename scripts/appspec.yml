@@ -6,10 +6,13 @@ files:
     overwrite: yes
 
 permissions:
-  - object: /
+  - object: /home/ubuntu/github_action
     pattern: "**"
     owner: ubuntu
     group: ubuntu
+    mode: 700
+    type:
+      - file
 
 hooks:
   ApplicationStart:
