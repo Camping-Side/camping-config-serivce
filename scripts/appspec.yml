@@ -10,7 +10,7 @@ permissions:
     pattern: "**"
     owner: ubuntu
     group: ubuntu
-    mode: 700
+    mode: 755
     type:
       - file
 
