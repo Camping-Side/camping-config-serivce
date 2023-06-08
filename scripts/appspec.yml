@@ -6,16 +6,13 @@ files:
     overwrite: yes
 
 permissions:
-  - object: /home/ubuntu/github_action
+  - object: /home/ubuntu
     pattern: "**"
     owner: ubuntu
     group: ubuntu
-    mode: 755
-    type:
-      - file
 
 hooks:
   ApplicationStart:
-    - location: ./gh_deploy.sh
+    - location: gh_deploy.sh
       timeout: 60
-      runas: ubuntu
+      runas: root
