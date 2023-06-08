@@ -17,9 +17,18 @@ docker login ghcr.io -u <계정명>
 ```shell
 # 맨 뒤에 버전은 master 브런치 maven version으로 싱크를 맞춰준다. 
 # 혹시나 로컬 rabbitmq를 사용하고 싶다면 profiles를 local로 세팅해주면 된다.
-docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name camping-config-service ghcr.io/camping-side/camping-config-serivce:1.0
+docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name camping-config-service ghcr.io/camping-side/camping-config-service:1.0
 ```
 
+### 실서버에서 배포전략
+```shell
+#!/bin/bash
+
+DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
+
+echo "===== 배포 시작 : $(date +%c) ==========" >> $DEPLOY_LOG_PATH
+
+```
 
 ---
 
@@ -33,9 +42,9 @@ docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name camping-config
 
 ---
 ### Setting Documentation
-> [RabbitMQ](./setting-doc/rabbitmq) <br>
+> [RabbitMQ](./setting-doc/rabbitmq){:target="_blank"} <br>
 > [Github Action](./.github/workflows/deploy.yaml) <br>
-> 
+> [appspec.yml](./scripts/appspec.yml) / [공식문서](https://docs.aws.amazon.com/ko_kr/codedeploy/latest/userguide/reference-appspec-file.html)
 > 
 > 
 

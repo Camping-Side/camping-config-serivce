@@ -2,7 +2,7 @@
 
 DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
 SERVICE_NAME="camping-config-service"
-IMAGE_VERSION="1.0"
+IMAGE_VERSION="latest"
 
 echo "===== $SERVICE_NAME 배포 시작 : $(date +%c) =====" >> $DEPLOY_LOG_PATH
 
