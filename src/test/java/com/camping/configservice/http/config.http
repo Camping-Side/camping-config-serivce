@@ -24,4 +24,4 @@ POST http://localhost:9888/decrypt
 GET http://localhost:9888/user-service/default
 
 ### config
-GET http://localhost:9888/config-service/default
+GET {{host}}/config/camping/dev
