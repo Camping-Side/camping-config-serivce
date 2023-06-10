@@ -25,3 +25,6 @@ GET http://localhost:9888/user-service/default
 
 ### config
 GET {{host}}/config/camping/dev
+
+### config healthcheck
+GET {{host}}/config/health-check

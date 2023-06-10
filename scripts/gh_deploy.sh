@@ -3,6 +3,10 @@
 DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
 SERVICE_NAME="camping-config-service"
 IMAGE_VERSION="latest"
+DOCKER_IMAGE="ghcr.io/camping-side/$SERVICE_NAME"
+
+echo "===== $SERVICE_NAME image pull : $(date +%c) =====" >> $DEPLOY_LOG_PATH
+docker pull DOCKER_IMAGE:IMAGE_VERSION
 
 echo "===== $SERVICE_NAME 배포 시작 : $(date +%c) =====" >> $DEPLOY_LOG_PATH
 
@@ -11,12 +15,12 @@ EXIST_BLUE=$(docker ps -f "name=$SERVICE_NAME-blue" | grep Up)
 # Blue 기동 중인지 체크( -z : 길이 0인지 )
 if [ -z "$EXIST_BLUE" ]; then
   echo "===== Blue Run Start =====" >> $DEPLOY_LOG_PATH
-  docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name $SERVICE_NAME-blue ghcr.io/camping-side/$SERVICE_NAME:$IMAGE_VERSION
+  docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name $SERVICE_NAME-blue $DOCKER_IMAGE:$IMAGE_VERSION
   STOP_TARGET_COLOR="green"
   START_TARGET_COLOR="blue"
 else
   echo "===== Green Run Start =====" >> $DEPLOY_LOG_PATH
-  docker run -d -p 9889:9888 -e "spring.profiles.active=dev" --name $SERVICE_NAME-green ghcr.io/camping-side/$SERVICE_NAME:$IMAGE_VERSION
+  docker run -d -p 9889:9888 -e "spring.profiles.active=dev" --name $SERVICE_NAME-green $DOCKER_IMAGE:$IMAGE_VERSION
   STOP_TARGET_COLOR="blue"
   START_TARGET_COLOR="green"
 fi
