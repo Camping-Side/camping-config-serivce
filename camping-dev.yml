@@ -82,7 +82,7 @@ logging:
 
 # 로그파일 저장 위치
 logserver:
-  path: C:\log
+  path: /tmp
 
 eureka:
   client:

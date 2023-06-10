@@ -32,3 +32,13 @@ management:
     web:
       exposure:
         include: health, busrefresh
+
+# 로그파일 저장 위치
+logserver:
+  path: /tmp
+
+logging:
+  level:
+    root: info
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
