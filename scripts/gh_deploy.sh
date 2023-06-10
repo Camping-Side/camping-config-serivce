@@ -37,7 +37,7 @@ fi
 
 # 신규 도커 이미지 삭제(다음 이미지 새로고침 위해)
 sleep 2
-docker rmi DOCKER_IMAGE
+docker rmi $DOCKER_IMAGE
 echo "===== 이미지 삭제 ====="  >> $DEPLOY_LOG_PATH
 
 echo "===== $SERVICE_NAME 배포 종료 : $(date +%c) =====" >> $DEPLOY_LOG_PATH
