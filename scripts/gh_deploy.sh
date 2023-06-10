@@ -4,28 +4,28 @@ DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
 SERVICE_NAME="camping-config-service"
 IMAGE_VERSION="latest"
 DOCKER_IMAGE="ghcr.io/camping-side/$SERVICE_NAME"
-
-echo "===== $SERVICE_NAME image pull : $(date +%c) =====" >> $DEPLOY_LOG_PATH
-docker pull DOCKER_IMAGE:IMAGE_VERSION
+PROFILE="dev"
 
 echo "===== $SERVICE_NAME 배포 시작 : $(date +%c) =====" >> $DEPLOY_LOG_PATH
 
 EXIST_BLUE=$(docker ps -f "name=$SERVICE_NAME-blue" | grep Up)
 
 # Blue 기동 중인지 체크( -z : 길이 0인지 )
+# docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name camping-config-service-blue ghcr.io/camping-side/camping-config-service:latest
 if [ -z "$EXIST_BLUE" ]; then
   echo "===== Blue Run Start =====" >> $DEPLOY_LOG_PATH
-  docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name $SERVICE_NAME-blue $DOCKER_IMAGE:$IMAGE_VERSION
+  docker run -d -p 9888:9888 -e "spring.profiles.active=$PROFILE" --name $SERVICE_NAME-blue $DOCKER_IMAGE:$IMAGE_VERSION
   STOP_TARGET_COLOR="green"
   START_TARGET_COLOR="blue"
 else
   echo "===== Green Run Start =====" >> $DEPLOY_LOG_PATH
-  docker run -d -p 9889:9888 -e "spring.profiles.active=dev" --name $SERVICE_NAME-green $DOCKER_IMAGE:$IMAGE_VERSION
+  docker run -d -p 9889:9888 -e "spring.profiles.active=$PROFILE" --name $SERVICE_NAME-green $DOCKER_IMAGE:$IMAGE_VERSION
   STOP_TARGET_COLOR="blue"
   START_TARGET_COLOR="green"
 fi
 
-sleep 10
+# 넉넉하게 30초 대기
+sleep 30
 
 # 신규버전 컨테이너 기동 확인
 START_SUCCESS=$(docker ps -f "name=$SERVICE_NAME-$START_TARGET_COLOR" | grep Up)
@@ -34,6 +34,11 @@ if [ -n "$START_SUCCESS" ]; then
   docker stop $SERVICE_NAME-$STOP_TARGET_COLOR
   echo "===== 이전 컨테이너 종료 ====="  >> $DEPLOY_LOG_PATH
 fi
+
+# 신규 도커 이미지 삭제(다음 이미지 새로고침 위해)
+sleep 2
+docker rmi DOCKER_IMAGE
+echo "===== 이미지 삭제 ====="  >> $DEPLOY_LOG_PATH
 
 echo "===== $SERVICE_NAME 배포 종료 : $(date +%c) =====" >> $DEPLOY_LOG_PATH
 
