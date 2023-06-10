@@ -24,7 +24,7 @@ POST http://localhost:9888/decrypt
 GET http://localhost:9888/user-service/default
 
 ### config
-GET {{host}}/config/camping/dev
+GET {{host}}:9888/camping/dev
 
 ### config healthcheck
-GET {{host}}/config/health-check
+GET {{host}}:9888/health-check
