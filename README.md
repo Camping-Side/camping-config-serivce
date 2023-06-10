@@ -6,6 +6,9 @@
 
 ---
 
+### Infra Structure
+![ConfigServer_배포](https://github.com/Camping-Side/camping-config-service/assets/56568571/9daef418-1983-46d2-982e-3d7d8b1fbb57)
+
 ### 도커 실행
 * 도커 로그인
 ```shell
