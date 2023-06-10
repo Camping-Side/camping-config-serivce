@@ -32,6 +32,8 @@ START_SUCCESS=$(docker ps -f "name=$SERVICE_NAME-$START_TARGET_COLOR" | grep Up)
 # -n : 길이가 0이 아닌경우
 if [ -n "$START_SUCCESS" ]; then
   docker stop $SERVICE_NAME-$STOP_TARGET_COLOR
+  sleep 3
+  docker rm $SERVICE_NAME-$STOP_TARGET_COLOR
   echo "===== 이전 컨테이너 종료 ====="  >> $DEPLOY_LOG_PATH
 fi
 
