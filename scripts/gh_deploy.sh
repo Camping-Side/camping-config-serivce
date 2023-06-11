@@ -2,7 +2,7 @@
 
 DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
 SERVICE_NAME="camping-config-service"
-IMAGE_VERSION="1.0.0"
+IMAGE_VERSION="1.0.1"
 DOCKER_IMAGE="ghcr.io/camping-side/$SERVICE_NAME"
 PROFILE="dev"
 
