@@ -27,6 +27,7 @@ fi
 # 넉넉하게 30초 대기
 sleep 30
 
+
 # 신규버전 컨테이너 기동 확인
 START_SUCCESS=$(docker ps -f "name=$SERVICE_NAME-$START_TARGET_COLOR" | grep Up)
 # -n : 길이가 0이 아닌경우
@@ -40,6 +41,8 @@ fi
 # 신규 도커 이미지 삭제(다음 이미지 새로고침 위해)
 sleep 2
 docker rmi $DOCKER_IMAGE
+# none 이미지 삭제
+docker rmi $(docker images -f "dangling=true" -q)
 echo "===== 이미지 삭제 ====="  >> $DEPLOY_LOG_PATH
 
 echo "===== $SERVICE_NAME 배포 종료 : $(date +%c) =====" >> $DEPLOY_LOG_PATH
