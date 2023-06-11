@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  api:
+    image: ghcr.io/camping-side/camping-config-service:latest
+
+    container_name: camping-config-service-blue
+
+    environment:
+      - LANG=ko_KR.UTF-8
+      - UWSGI_PORT=9888
+
+    ports:
+      - '9888:9888'
