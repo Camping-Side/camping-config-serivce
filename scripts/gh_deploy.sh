@@ -2,7 +2,7 @@
 
 DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
 SERVICE_NAME="camping-config-service"
-IMAGE_VERSION="1.0.2"
+IMAGE_VERSION="1.0.3"
 DOCKER_IMAGE="ghcr.io/camping-side/$SERVICE_NAME"
 PROFILE="dev"
 
@@ -42,8 +42,8 @@ if [ -n "$START_SUCCESS" ]; then
 fi
 
 # 신규 도커 이미지 삭제(다음 이미지 새로고침 위해)
-sleep 2
-docker rmi docker image prune -a
+sleep 3
+docker image prune -a
 # none 이미지 삭제
 #docker rmi $(docker images -f "dangling=true" -q)
 echo "===== 이미지 삭제 ====="  >> $DEPLOY_LOG_PATH

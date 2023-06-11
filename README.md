@@ -9,7 +9,7 @@
 ### Infra Structure
 ![ConfigServer_배포](https://github.com/Camping-Side/camping-config-service/assets/56568571/9daef418-1983-46d2-982e-3d7d8b1fbb57)
 
-### 도커 실행
+### 로컬 도커 실행
 * 도커 로그인
 ```shell
 docker login ghcr.io -u <계정명>
@@ -23,13 +23,15 @@ docker login ghcr.io -u <계정명>
 docker run -d -p 9888:9888 -e "spring.profiles.active=dev" --name camping-config-service ghcr.io/camping-side/camping-config-service:1.0
 ```
 
+---
+
 ### 실서버에서 배포전략
+1. Dockerfile, pom.xml, gh_deploy.sh에서 version up
+2. master branch push
+3. 필요하다면 shell 접속하여 아래 명령어로 확인
 ```shell
-#!/bin/bash
-
-DEPLOY_LOG_PATH="/home/ubuntu/github_action/deploy.log"
-
-echo "===== 배포 시작 : $(date +%c) ==========" >> $DEPLOY_LOG_PATH
+docker ps -a
+docker images
 
 ```
 
@@ -43,12 +45,11 @@ echo "===== 배포 시작 : $(date +%c) ==========" >> $DEPLOY_LOG_PATH
 ---
 
 
----
 ### Setting Documentation
 > [RabbitMQ](./setting-doc/rabbitmq){:target="_blank"} <br>
 > [Github Action](./.github/workflows/deploy.yaml) <br>
-> [appspec.yml](./scripts/appspec.yml) / [공식문서](https://docs.aws.amazon.com/ko_kr/codedeploy/latest/userguide/reference-appspec-file.html)
-> 
+> [appspec.yml](./scripts/appspec.yml) / [공식문서](https://docs.aws.amazon.com/ko_kr/codedeploy/latest/userguide/reference-appspec-file.html)<br>
+> [Nginx](./setting-doc/nginx/real)<br>
 > 
 
 ---
