@@ -5,7 +5,7 @@ services:
   api:
     image: ghcr.io/camping-side/camping-config-service:latest
 
-    container_name: camping-config-service-blue
+    container_name: camping-config-service-green
 
     environment:
       - LANG=ko_KR.UTF-8
