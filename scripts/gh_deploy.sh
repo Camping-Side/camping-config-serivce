@@ -43,7 +43,7 @@ fi
 
 # 신규 도커 이미지 삭제(다음 이미지 새로고침 위해)
 sleep 3
-docker image prune -a
+docker -l debug system prune -af
 # none 이미지 삭제
 #docker rmi $(docker images -f "dangling=true" -q)
 echo "===== 이미지 삭제 ====="  >> $DEPLOY_LOG_PATH

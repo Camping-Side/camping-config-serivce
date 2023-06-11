@@ -80,10 +80,6 @@ logging:
     org.hibernate.type: trace
 
 
-# 로그파일 저장 위치
-logserver:
-  path: /tmp
-
 eureka:
   client:
     register-with-eureka: true
